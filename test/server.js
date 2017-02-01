@@ -15,15 +15,15 @@ app.set('view engine', 'pug')
 
 
 app.get('/', (req, res) => {
-	req.flash('notify', 'This is a test notification.')
+	req.flash('This is a test notification.')
 	res.render('index')
 })
 app.get('/redirect', (req, res) => {
-	req.flash('notify', 'Successfully redirected!')	
+	req.flash('info', 'Successfully redirected!')	
 	res.redirect('/')
 })
 app.get('/multiple', (req, res) => {
-	req.flash('notify', 'Multiple notifications.')	
+	req.flash('info', 'Multiple notifications.')	
 	res.redirect('/')
 })
 app.get('/error', (req, res) => {

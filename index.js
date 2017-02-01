@@ -1,65 +1,35 @@
 'use strict'
-/*
-	- Test
-	- Arrow functions when possible
 
-
-
-	const messages = require('express-messages')
-	app.use(messages())
-	app.get('/', (req, res) => {
-		req.flash('notify', 'Test notification.')
-	})
-
-
-	- 
-
-
-
-*/
-
-module.exports = function(){
-	return function(req, res, next){
+module.exports = () => {
+	return (req, res, next) => {
 		req.flash = _flash
-		res.locals.getMessages = _getMessages(req, res)
+		res.locals.getMessages = _getMessages(req)
 		next()
 	}
 }
 
-
+// Create messages
 function _flash(type, msg){
 	if(this.session === undefined) throw Error('req.flash() requires sessions')
 	const msgs = this.session.flash = this.session.flash || {}
-
-	// If setting
-	if(type && msg){
-		msgs[type] = msgs[type] || []
-		if(Array.isArray(msg)){
-			msgs[type].push(...msg)
-			return
-		}
-		msgs[type].push(msg)
+	if(!msg){
+		msg = type
+		type = 'info'
+	}
+	msgs[type] = msgs[type] || []
+	if(Array.isArray(msg)){
+		msgs[type].push(...msg)
 		return
 	}
-
-	// If getting
-	if(type){
-		const arr = msgs[type]
-		delete msgs[type]
-		return arr || []
-	}
-
-
-	// If getting everything
-	this.session.flash = {}
-	return msgs
-
+	msgs[type].push(msg)
 }
 
-
-
-function _getMessages(req, res){
-	return function(){
-		return req.flash()
+// Get all messages
+function _getMessages(req){
+	return () => {
+		if(req.session === undefined) throw Error('getMessages() requires sessions')
+		const msgs = req.session.flash = req.session.flash || {}
+		req.session.flash = {}
+		return msgs
 	}
 }

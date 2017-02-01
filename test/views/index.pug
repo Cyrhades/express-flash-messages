@@ -10,9 +10,9 @@ html
 		main
 
 			- const messages = getMessages()
-			if messages.notify
-				each msg in messages.notify
-					.notify= msg
+			if messages.info
+				each msg in messages.info
+					.info= msg
 			if messages.error
 				each msg in messages.error
 					.error= msg
