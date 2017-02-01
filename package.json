@@ -1,6 +1,6 @@
 {
   "name": "express-flash-messages",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Simple Express.js middleware for flash messages.",
   "main": "index.js",
   "repository": {},
@@ -13,6 +13,6 @@
     "pug": "^2.0.0-beta10"
   },
   "scripts": {
-  	"test": "node test/server"
+    "test": "node test/server"
   }
 }
