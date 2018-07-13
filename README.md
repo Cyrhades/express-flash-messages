@@ -4,6 +4,12 @@ Provides Express.js flash messages that work with rendering or redirecting.
 
 Requires sessions middleware.
 
+### THIS PROJECT IS UNMAINTAINED
+
+This means that bugs will not be fixed and features will not be added unless someone else does so.  Unfortunately, the former maintainers no longer build express.js applications.
+
+If you're interested in being a maintainer for express-flash-messages, please create an issue.
+
 ## Installation
 ```
 $ npm install express-flash-messages
