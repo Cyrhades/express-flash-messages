@@ -45,7 +45,7 @@ Example in Pug:
 - var messages = getMessages()
 
 if messages.notify
-	each msg in messages.info
+	each msg in messages.notify
 		.info= msg
 if messages.error
 	each msg in messages.error
